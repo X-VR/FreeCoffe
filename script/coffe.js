@@ -27,7 +27,7 @@ async function savePlayerData(event) {
     };
 
     try {
-        const response = await fetch('api/coffe.php', {
+        const response = await fetch('api/submit.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
