@@ -16,9 +16,11 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: 'Method not allowed. Use POST.' });
     }
 
+    // Testing mode - set to false to call Unity API
+    const TESTING_MODE = true;
+    
     // Your Unity credentials (keep these secret!)
     const PROJECT_ID = 'be851ebb-0f03-46aa-97c6-98fd39d04988';
-    const API_KEY = 'your-unity-api-key';
 
     try {
         // Get JSON data from request body
@@ -38,6 +40,23 @@ export default async function handler(req, res) {
         if (!data.firstName || !data.lastName) {
             return res.status(400).json({ error: 'First name and last name are required' });
         }
+        
+        // TESTING MODE - Skip Unity API calls
+        if (TESTING_MODE) {
+            console.log('TESTING MODE: Skipping Unity API calls');
+            console.log('Would save data:', data);
+            
+            return res.status(200).json({
+                success: true,
+                message: 'Data saved to Unity Cloud Save successfully (TESTING MODE)',
+                playerId: 'test-player-12345',
+                data_saved: data,
+                testing_mode: true
+            });
+        }
+        
+        // PRODUCTION MODE - Call Unity API
+        console.log('PRODUCTION MODE: Calling Unity API...');
         
         // Step 1: Anonymous Sign In
         console.log('Step 1: Starting anonymous authentication...');
