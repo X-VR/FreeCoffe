@@ -1,0 +1,15 @@
+{
+  "name": "unity-cloud-save-api",
+  "version": "1.0.0", 
+  "description": "Unity Cloud Save API endpoint for Vercel",
+  "main": "api/index.js", 
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required'",
+    "start": "echo 'This is a serverless function'"
+  },
+  "dependencies": {}, 
+  "engines": {
+    "node": ">=18.0.0" 
+  }
+}
