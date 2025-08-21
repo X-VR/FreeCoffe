@@ -1,0 +1,172 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    position: relative;
+    flex-direction: column; /* stack items vertically */
+}
+
+/* Background image that scrolls */
+.background-image {
+    position: fixed;  /* sit behind everything */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: -1;
+}
+
+
+/* Default as absolute */
+.background-image.absolute {
+    position: absolute;
+}
+
+/* Alternate fixed mode */
+.container.hide {
+    display: none;
+}
+
+/* Container will scroll with page */
+.container {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 100px auto;   /* space from top/bottom so you can scroll */
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.header p {
+    color: #666;
+    font-size: 1.1em;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 12px;
+    font-size: 1em;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transform: translateY(-2px);
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.status {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.status.show {
+    opacity: 1;
+}
+
+.status.success {
+    background: rgba(72, 187, 120, 0.1);
+    color: #2d7738;
+    border: 1px solid rgba(72, 187, 120, 0.3);
+}
+
+.status.error {
+    background: rgba(245, 101, 101, 0.1);
+    color: #c53030;
+    border: 1px solid rgba(245, 101, 101, 0.3);
+}
+
+/* Responsive design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+        background-attachment: scroll; /* Better performance on mobile */
+      }
+      
+      .header h1 {
+        font-size: 2rem;
+      }
+      
+      form {
+        padding: 1.5rem;
+      }
+    }
