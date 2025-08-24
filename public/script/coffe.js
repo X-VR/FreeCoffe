@@ -147,11 +147,12 @@
         }
 
         function setLanguage(lang) {
-            const texts = translations[lang];
+             const texts = translations[lang];
             const bgImage = document.getElementById('bgImage');
             
-            // Update background image based on language
-            bgImage.className = `background-overlay ${lang}`;
+            // Update background image based on language - preserve existing classes
+            bgImage.classList.remove('en', 'ar');
+            bgImage.classList.add(lang);
 
             // Update text content
             document.getElementById('welcomeTitle').textContent = texts.welcomeTitle;
