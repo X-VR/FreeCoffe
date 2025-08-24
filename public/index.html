@@ -1,40 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Welcome Landing Page</title>
-  <link rel="stylesheet" href="css/coffeStyle.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome Landing Page</title>
+    <link rel="stylesheet" href="css/coffeStyle.css">
 </head>
+
 <body>
-    <!-- Background image -->
-    <img src="images/background.png" alt="Background Image" class="background-image">
-
     
-    <div class="container">
-        <div class="header">
-            <h1>Welcome</h1>
+    <img src="images/background.png" alt="Background Image" class="background-overlay">
+
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button id="languageButton" class="lang-btn">
+            <i class="fas fa-globe"></i>
+            <span>Language</span>
+        </button>
+        <div id="languageDropdown" class="lang-dropdown">
+            <a href="#" class="lang-option" data-lang="en">English</a>
+            <a href="#" class="lang-option" data-lang="ar">العربية</a>
         </div>
-        <!-- User Information Form -->
-        <form id="userForm">
-            <div class="form-group">
-                <label for="firstName">First Name:</label>
-                <input type="text" id="firstName" name="firstName" required>
-            </div>
-
-            <div class="form-group">
-                <label for="lastName">Last Name:</label>
-                <input type="text" id="lastName" name="lastName" required>
-            </div>
-
-            <button type="submit" class="submit-btn" id="submitBtn">
-                Submit
-            </button>
-
-            <div class="status" id="statusMessage"></div>
-        </form>
     </div>
 
-  <script src="script/coffe.js"></script>
+    <!-- Main Content -->
+    <div class="main-container">
+        <div class="form-container" id="formContainer">
+            <div class="header">
+                <h1 id="welcomeTitle">Welcome</h1>
+                <p class="subtitle" id="subtitle">Please enter your information below</p>
+            </div>
+            
+            <form id="playerForm">
+                <div class="input-group">
+                    <input type="text" id="firstNameInput" name="firstName" class="input-field" placeholder=" " required>
+                    <label for="firstNameInput" class="input-label" id="firstNameLabel">First Name</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="lastNameInput" name="lastName" class="input-field" placeholder=" " required>
+                    <label for="lastNameInput" class="input-label" id="lastNameLabel">Last Name</label>
+                </div>
+
+                <button type="submit" class="submit-button" id="submitButton">
+                    <span class="loading-spinner" id="loadingSpinner"></span>
+                    <span class="button-text" id="submitButtonText">Submit</span>
+                </button>
+
+                <div class="status-message" id="statusMessage"></div>
+            </form>
+        </div>
+    </div>
+
+
 </body>
 </html>
