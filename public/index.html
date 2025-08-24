@@ -4,18 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome Landing Page</title>
-    <link rel="stylesheet" href="css/coffeStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <link rel="stylesheet" href="css/coffeStyle.css">   
+    <style>
+      
+    </style>
 </head>
-
 <body>
-    
-    <img src="images/background.png" alt="Background Image" class="background-overlay">
+
+    <img src="images/ph-en.png" alt="Background Image" class="background-overlay" id="bgImage">
+
+    <!-- Animated Particles Background -->
+    <div class="particles" id="particles"></div>
+    <div class="background-overlay"></div>
+
 
     <!-- Language Switcher -->
     <div class="language-switcher">
         <button id="languageButton" class="lang-btn">
             <i class="fas fa-globe"></i>
-            <span>Language</span>
         </button>
         <div id="languageDropdown" class="lang-dropdown">
             <a href="#" class="lang-option" data-lang="en">English</a>
@@ -24,7 +31,7 @@
     </div>
 
     <!-- Main Content -->
-    <div class="main-container">
+    <div class="main-container" id ="mainContainer"> >
         <div class="form-container" id="formContainer">
             <div class="header">
                 <h1 id="welcomeTitle">Welcome</h1>
@@ -34,12 +41,12 @@
             <form id="playerForm">
                 <div class="input-group">
                     <input type="text" id="firstNameInput" name="firstName" class="input-field" placeholder=" " required>
-                    <label for="firstNameInput" class="input-label" id="firstNameLabel">First Name</label>
+                    <label for="firstNameInput" class="input-label" id="firstNameLabel">Full Name</label>
                 </div>
 
                 <div class="input-group">
                     <input type="text" id="lastNameInput" name="lastName" class="input-field" placeholder=" " required>
-                    <label for="lastNameInput" class="input-label" id="lastNameLabel">Last Name</label>
+                    <label for="lastNameInput" class="input-label" id="lastNameLabel">Phone</label>
                 </div>
 
                 <button type="submit" class="submit-button" id="submitButton">
@@ -52,6 +59,6 @@
         </div>
     </div>
 
-
+    <script src="script/coffe.js"></script>
 </body>
 </html>
