@@ -18,18 +18,34 @@
             left: 0;
             width: 100%;
             height: 6000px;
-            background-image: url('../images/ph-en.png');
-            background-size: cover;
+            background-image: url('../images/pc-en.png');
+            background-size: contain;
+            background-position: top center;
             z-index: -1;
             transition: all 0.5s ease;
         }
 
         .background-overlay.ar {
-            background-image: url('../images/ph-ar.png');
+            background-image: url('../images/pc-ar.png');
         }
 
         .background-overlay.en {
-            background-image: url('../images/ph-en.png');
+            background-image: url('../images/pc-en.png');
+        }
+
+         /* Mobile Background Images */
+        @media (max-width: 768px) {
+            .background-overlay {
+                background-image: url('../images/ph-en.png');
+            }
+
+            .background-overlay.ar {
+                background-image: url('../images/ph-ar.png');
+            }
+
+            .background-overlay.en {
+                background-image: url('../images/ph-en.png');
+            }
         }
 
         .hide {
