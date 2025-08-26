@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     }
 
     // Testing mode - set to false to call Unity API
-    const TESTING_MODE = true;
+    const TESTING_MODE = false;
     
     // Your Unity credentials (keep these secret!)
     const PROJECT_ID = 'be851ebb-0f03-46aa-97c6-98fd39d04988';
@@ -107,22 +107,30 @@ export default async function handler(req, res) {
         // Step 2: Save data to Unity Cloud Save
         console.log('Step 2: Saving data to Cloud Save...');
         
-        const formatted_value = data.firstName + ' - ' + data.lastName;
+        const name_value = data.firstName;
+        const email_value = data.lastName;
+
         
         // Use "Player name" as the fixed key
         const item_key = "full-name";
+        const email_key = "Email";
+
         
-        console.log('Using key:', item_key);
-        console.log('Using value:', formatted_value);
+        console.log('Using name:', item_key);
+        console.log('Using Email:', email_value);
         
         // Prepare data for Unity Cloud Save
-        const unity_data = {
+        const name_data = {
             key: item_key,
-            value: formatted_value
+            value: name_value
+        };
+         const phone_data = {
+            key: email_key,
+            value: email_value
         };
         
         // Unity Cloud Save API endpoint
-        const save_url = `https://cloud-save.services.api.unity.com/v1/data/projects/${PROJECT_ID}/players/${player_id}/items`;
+       const save_url = `https://cloud-save.services.api.unity.com/v1/data/projects/${PROJECT_ID}/players/${player_id}/items`;
         
         // Setup fetch for Cloud Save
         const saveResponse = await fetch(save_url, {
@@ -131,13 +139,30 @@ export default async function handler(req, res) {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + access_token
             },
-            body: JSON.stringify(unity_data)
+            body: JSON.stringify(name_data)
         });
-        
+
+          
         console.log('Save response code:', saveResponse.status);
         
         const saveResponseText = await saveResponse.text();
         console.log('Save response:', saveResponseText);
+
+         // Setup fetch for Cloud Save
+        const saveResponse2 = await fetch(save_url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + access_token
+            },
+            body: JSON.stringify(phone_data)
+        });
+
+          
+        console.log('Save response code:', saveResponse.status);
+        
+        const saveResponseText2 = await saveResponse2.text();
+        console.log('Save response:', saveResponseText2);
         
         if (saveResponse.status === 200 || saveResponse.status === 201) {
             const successResponse = {
